@@ -122,5 +122,13 @@ if [ $? -ne 0 ]; then
 else
     echo "Successful Test 'running without specifying metadata.json' (bin)"
 fi
+cd ..
+
+# Test changing the rake task using settings
+test_bin "rake_global_options" $FAILURE
+test_rake "rake_global_options" $SUCCESS
+
+# Test multiple lints with different options
+test_rake "rake_multiple_json_options" $SUCCESS metadata_lint_multi
 
 exit $STATUS
